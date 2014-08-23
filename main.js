@@ -10,9 +10,9 @@ var mainState = {
     game.load.image('circle', 'assets/circle.png');
   },
 
-  create: function() { 
+  create: function() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.arcade.gravity.y=100;
+    game.physics.arcade.gravity.y=300;
     this.circle = this.game.add.sprite(player1.x, player1.y, 'circle');
 
     game.physics.enable(this.circle, Phaser.Physics.ARCADE);
@@ -23,10 +23,12 @@ var mainState = {
     this.circle.body.bounce.y = 0.2;
     this.circle.body.collideWorldBounds = true;
     this.circle.body.setSize(30, 30, 15, 15);
+
+    this.game.input.keyboard.addKey(Phaser.Keyboard.UP).onDown.add((function (){ this.circle.body.velocity.y-=300; }), this);
   },
 
   update: function() {
-    console.log (this.circle.position.x);
+    //console.log (this.circle.position.x);
   },
 };
 
