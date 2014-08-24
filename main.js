@@ -39,6 +39,8 @@ var mainState = {
   update: function() {
     game.physics.arcade.collide(circle, platforms, (function() { console.log("collision")}));
 
+    console.log(game.physics.arcade.distanceBetween(circle, platforms.getBottom()));
+
     kb = game.input.keyboard;
 
     if (kb.isDown(Phaser.Keyboard.D))
