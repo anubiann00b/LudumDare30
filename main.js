@@ -31,13 +31,14 @@ var mainState = {
     this.circle.body.maxVelocity.x = 300;
     this.circle.body.drag.x = 400;
     this.circle.body.collideWorldBounds = true;
-    this.circle.body.setSize(30, 30, 15, 15);
 
     cursors = game.input.keyboard.createCursorKeys();
     this.game.input.keyboard.addKey(Phaser.Keyboard.W).onDown.add(this.jump, this);
   },
 
   update: function() {
+    game.physics.arcade.collide(circle, platforms);
+
     kb = game.input.keyboard;
 
     if (kb.isDown(Phaser.Keyboard.D)) {
