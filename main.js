@@ -3,7 +3,7 @@ var game = new Phaser.Game(600, 480, Phaser.AUTO, 'gameDiv');
 var player1 = { x:"50", y:"50" };
 var player2 = { x:"50", y:"50" };
 var circle;
-var blocks;
+var platforms;
 
 var mainState = {
 
@@ -37,16 +37,14 @@ var mainState = {
   },
 
   update: function() {
-    game.physics.arcade.collide(circle, platforms);
+    game.physics.arcade.collide(circle, platforms, (function() { console.log("collision")}));
 
     kb = game.input.keyboard;
 
-    if (kb.isDown(Phaser.Keyboard.D)) {
+    if (kb.isDown(Phaser.Keyboard.D))
       this.circle.body.velocity.x += 50;
-    }
-    if (kb.isDown(Phaser.Keyboard.A)) {
+    if (kb.isDown(Phaser.Keyboard.A))
       this.circle.body.velocity.x -= 50;
-    }
   },
 
   jump: function() {
